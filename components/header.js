@@ -12,6 +12,12 @@ const Header = ({ dark, setDark }) => {
         await AsyncStorage.removeItem('week')
         await AsyncStorage.removeItem('months')
     }
+    const themeToggle = async () => {
+        setVisible(false)
+        let str = JSON.stringify(!dark)
+        await AsyncStorage.setItem('theme', str)
+        setDark(!dark)
+    }
     return (
         <>
             <Appbar.Header
@@ -26,7 +32,7 @@ const Header = ({ dark, setDark }) => {
                     visible={visible}
                     onDismiss={() => setVisible(false)}
                     anchor={<Appbar.Action onPress={() => setVisible(true)} icon="dots-vertical" color={(dark) ? "#ffff" : "#333"} />}>
-                    <Menu.Item onPress={() => setDark(!dark)} title={(dark) ? "Light theme" : "Dark theme"} />
+                    <Menu.Item onPress={() => themeToggle()} title={(dark) ? "Light theme" : "Dark theme"} />
                     <Menu.Item onPress={() => {
                         setVisible(false)
                         setDialog(true)

@@ -18,12 +18,8 @@ export default function MonthTab({ dark }) {
             let monthsObj = await AsyncStorage.getItem('months')
             monthsObj = JSON.parse(monthsObj)
             if (monthsObj != null) {
-                setDaysArray(monthsObj)
+                setMonthsArray(monthsObj)
             }
-        } catch (error) {
-            console.log(error)
-        }
-        try {
             let obj = await AsyncStorage.getItem("today")
             obj = JSON.parse(obj)
             if (obj != null) {

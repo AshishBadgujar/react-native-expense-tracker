@@ -13,6 +13,7 @@ export default function WeekTab({ dark }) {
             setRefreshing(false)
         }
     }, [refreshing])
+
     const getData = async () => {
         try {
             let weekObj = await AsyncStorage.getItem('week')
@@ -20,10 +21,6 @@ export default function WeekTab({ dark }) {
             if (weekObj != null) {
                 setDaysArray(weekObj)
             }
-        } catch (error) {
-            console.log(error)
-        }
-        try {
             let obj = await AsyncStorage.getItem("today")
             obj = JSON.parse(obj)
             if (obj != null) {
